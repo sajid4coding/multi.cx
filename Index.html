@@ -2124,7 +2124,9 @@
         }
 
         /* ROTATE CLIP HEADING CSS END */
-
+        .ahover:hover{
+          background-color: #888 !important;
+        }
     </style>
   </head>
   <!-- <body class="opening hide-UI view-2D zoom-large data-close controls-close"> -->
@@ -2153,8 +2155,26 @@
     </div>
 
     <div id="myaccount_hide_in_mobile_version">
-      <a style="text-align: right; position: absolute; right: 40px; top: 30px; z-index: 99999; font-size: 22px; font-size: 20px; font-weight: 500; color: #FFFFFF99; text-decoration: none;" href="https://www.multi.cx/setup-page"> Account </a>
+      <a style="text-align: right; position: absolute; right: 40px; top: 30px; z-index: 99999; font-size: 20px; font-weight: 500; color: #FFFFFF99; text-decoration: none;" href="https://www.multi.cx/setup-page"> Account </a>
     </div>
+
+    <!-- <div id="myaccount_hide_in_mobile_version">
+        <?php 
+          if( is_user_logged_in() ){?>
+            <div id="bhover" style="cursor: pointer; width: 200px; text-align: right; position: absolute; right: 40px; top: 30px; z-index: 99999; font-size: 22px; font-size: 20px; font-weight: 500; color: #FFFFFF99; text-decoration: none;" href="#"> Account 
+              <div style="position: absolute; left: 0; top: 100%; width: 100%;">
+                <div id="div1" style="display: none;">
+                  <a class="ahover" style="font-size: 22px; display: block; background: white; padding: 6px 20px; text-align: left; text-decoration: none; color: black;" href="https://www.multi.cx/account-details">Account Details</a>
+                </div>
+                <div id="div2" style="display: none;">
+                  <a class="ahover" style="font-size: 22px; display: block; background: white; padding: 6px 20px; text-align: left; text-decoration: none; color: black;" href="<?php echo wp_logout_url( 'https://www.multi.cx' ); ?>">Logout</a>
+                </div>
+              </div>
+            </div>
+          <?php }else{ ?>
+            <a style="text-align: right; position: absolute; right: 40px; top: 30px; z-index: 99999; font-size: 20px; font-weight: 500; color: #FFFFFF99; text-decoration: none;" href="https://www.multi.cx/setup-page"> Account </a>
+        <?php } ?>
+    </div> -->
 
     
     <div id="universe" class="scale-stretched">
@@ -2258,11 +2278,18 @@
             </div>
           </div> -->
           <div id="sun">
+            <!-- <?php 
+              if( !is_user_logged_in() ){ ?>
+                <dl class="infos">
+                  <dt>Sun</dt>
+                  <dd><span> <a href="https://www.multi.cx/setup-page">My Account</a> </span></dd>
+                </dl>
+            <?php } ?> -->
             <dl class="infos">
-              <!-- <dt>Sun</dt> -->
+              <dt>Sun</dt>
               <dd><span> <a href="https://www.multi.cx/setup-page">My Account</a> </span></dd>
-              <!-- <dd><span> <a onclick="openModal()">My Account</a> </span></dd> -->
-              <!-- <dd><span> <a href="https://www.multiworld.cx/setup-page">My Center</a> </span></dd> -->
+              <!-- <dd><span> <a onclick="openModal()">My Account</a> </span></dd>
+              <dd><span> <a href="https://www.multiworld.cx/setup-page">My Center</a> </span></dd> -->
             </dl>
           </div>
         </div>
@@ -2310,8 +2337,15 @@
       </div>
     </div>
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+      $(document).ready(function(){
+        $("#bhover").click(function(){
+          $("#div1").fadeToggle();
+          $("#div2").fadeToggle();
+          $("#div3").fadeToggle();
+        });
+      });
         /* ROTATE CLIP HEADING SCRIPT START */
         const dynamicText = document.querySelector("h1 span");
         const words = ["It's Multi."];
